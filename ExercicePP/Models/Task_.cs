@@ -29,6 +29,7 @@ namespace ExercicePP.Models
                 Delay = Delay,
                 Done = Done
             };
+            
         }
     }
 }

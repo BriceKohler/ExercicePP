@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.Json.Nodes;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using System.Windows.Documents;
 using ExercicePP.Models;
@@ -13,7 +14,7 @@ using static System.Net.Mime.MediaTypeNames;
 
 namespace ExercicePP.Utilities
 {
-    internal static class IO
+    public static class IO
     {
 
         /// <summary>
@@ -24,17 +25,16 @@ namespace ExercicePP.Utilities
         public static async Task<ObservableCollection<Task_>> GetTasksAsync(string filename)
         {
             ObservableCollection<Task_> list = new ObservableCollection<Task_>();
-            if (File.Exists(filename))
-            {
-                string text = File.ReadAllText(filename);
-                list = JsonConvert.DeserializeObject<ObservableCollection<Task_>>(text);
-                if (list.Count == 0) list = TestData();
-            }
-            else
-            {
-                list = TestData();
-            }
-            return list;
+            string text = GetText(filename);
+
+            if (text != "") return JsonConvert.DeserializeObject<ObservableCollection<Task_>>(text);
+            return TestData();
+        }
+
+        public static string GetText(string filename)
+        {
+            if (File.Exists(filename)) return File.ReadAllText(filename);
+            else return "";
         }
 
         /// <summary>
@@ -49,7 +49,8 @@ namespace ExercicePP.Utilities
             File.WriteAllText(filename, list);
         }
 
-        private static ObservableCollection<Task_> TestData()
+
+        public static ObservableCollection<Task_> TestData()
         {
             var list = new ObservableCollection<Task_>()
                 {   new Task_
@@ -107,7 +108,6 @@ namespace ExercicePP.Utilities
                         Done = true
                     }
                 };
-
 
             return list;
         }

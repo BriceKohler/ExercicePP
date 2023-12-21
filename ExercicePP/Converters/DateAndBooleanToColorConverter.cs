@@ -11,8 +11,10 @@ using System.Windows.Media;
 
 namespace ExercicePP.Converters
 {
-    class DateAndBooleanToColorConverter : IMultiValueConverter
+    public class DateAndBooleanToColorConverter : IMultiValueConverter
     {
+
+        static int DayLimit = 7;
         /// <summary>
         /// Converter To colorize a background from a date and a boolean value.
         /// </summary>
@@ -28,17 +30,24 @@ namespace ExercicePP.Converters
             {
                 var date = (DateTime)values[0];
                 var done = (bool)values[1];
+                Color col = ColorFromDateAndDone(date, done);
 
-                if (done || DateTime.Now.AddDays(7) < date)
-                    return ColorOrBrush(Colors.Lime, targetType);
-                else if (DateTime.Now > date)
-                    return ColorOrBrush(Colors.Red, targetType);
-                else return ColorOrBrush(Colors.Orange, targetType);
+                return ColorOrBrush(col, targetType);
             }
             catch (Exception ex)
             {
                 throw new Exception(ex.Message);
             }
+        }
+
+        public static Color ColorFromDateAndDone(DateTime date, bool done)
+        {
+            if (done || DateTime.Now.AddDays(DayLimit) < date)
+                return Colors.Lime;
+            else if (DateTime.Now > date)
+                return Colors.Red;
+            else return Colors.Orange;
+
         }
 
         private object ColorOrBrush(Color c, Type targetType)

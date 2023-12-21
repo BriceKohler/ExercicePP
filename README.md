@@ -15,8 +15,8 @@
 - Saving task list in local file before quitting
 
 ## Tech
-Mvvm Toolkit has not been used due to the time to master it.
-Sorting and filtering function have not been included in the listview control. It's been best compromise to stay in mvvm (no code-behind), not using custom controls (as Telerik's or so), and keep a simple solution without behavior.
+- Mvvm Toolkit has not been used due to the time to master it.
+- Sorting and filtering function have not been included in the listview control. It's been best compromise to stay in mvvm (no code-behind), not using custom controls (as Telerik's or so), and keep a simple solution without behavior.
 
 ## Development
 

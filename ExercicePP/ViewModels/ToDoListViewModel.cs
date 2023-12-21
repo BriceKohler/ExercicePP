@@ -62,10 +62,19 @@ namespace ExercicePP.ViewModels
         {
             get
             {
-                var filteredtasks = Tasks;
-                if (NameFilter != null) filteredtasks = new ObservableCollection<Task_>(filteredtasks.Where(t => t.TaskName.Contains(NameFilter)));
-                if (RespFilter != "All") filteredtasks = new ObservableCollection<Task_>(filteredtasks.Where(t => t.Responsible== RespFilter));
-                if (DoneFilter != "All") filteredtasks = new ObservableCollection<Task_>(filteredtasks.Where(t => t.Done == (DoneFilter=="Done")));
+
+
+
+                var l_filteredtasks = Tasks.ToList();
+                if (NameFilter != null) l_filteredtasks = l_filteredtasks.Where(t => t.TaskName.Contains(NameFilter)).ToList();
+                if (RespFilter != "All") l_filteredtasks = l_filteredtasks.Where(t => t.Responsible== RespFilter).ToList();
+                if (DoneFilter != "All") l_filteredtasks = l_filteredtasks.Where(t => t.Done == (DoneFilter=="Done")).ToList();
+                
+
+                if(SortAscending)l_filteredtasks = l_filteredtasks.OrderBy(t => t.GetType().GetProperty(Sorter).GetValue(t)).ToList();
+                else l_filteredtasks = l_filteredtasks.OrderByDescending(t => t.GetType().GetProperty(Sorter).GetValue(t)).ToList();
+
+                var filteredtasks = new ObservableCollection<Task_>(l_filteredtasks);
                 return filteredtasks ;
             }
         }
@@ -132,6 +141,44 @@ namespace ExercicePP.ViewModels
                 List<string> filter = Tasks.Select(t => t.Responsible).Distinct().ToList();
                 filter.Insert(0,"All");
                 return filter;
+            }
+        }
+
+        private string _sorter = "Delay";
+        public string Sorter
+        {
+            get
+            {
+                return _sorter;
+            }
+            set
+            {
+                _sorter = value;
+                OnPropertyChanged("FilteredTasks");
+                OnPropertyChanged();
+            }
+        }
+
+        public List<string> PossibleSorter
+        {
+            get
+            {
+                return typeof(Task_).GetProperties().Select(p=>p.Name).OrderBy(n=>n).ToList();
+            }
+        }
+
+        private bool _sortAscending= true;
+        public bool SortAscending
+        {
+            get
+            {
+                return _sortAscending;
+            }
+            set
+            {
+                _sortAscending = value;
+                OnPropertyChanged("FilteredTasks");
+                OnPropertyChanged();
             }
         }
 

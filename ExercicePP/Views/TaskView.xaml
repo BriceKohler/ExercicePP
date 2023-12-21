@@ -9,18 +9,18 @@
              d:DesignHeight="450" d:DesignWidth="500">
     <Grid>
         <TextBox HorizontalAlignment="Left" Margin="36,14,0,0" IsReadOnly="True" TextWrapping="Wrap" Text="{Binding Task.ID}" VerticalAlignment="Top" Width="35"/>
-        <TextBox HorizontalAlignment="Left" Margin="2,64,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Text="{Binding Task.TaskName}"/>
-        <TextBox HorizontalAlignment="Left" Margin="0,117,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="490" Height="73" Text="{Binding Task.Description}"/>
-        <Label Content="Task Name" HorizontalAlignment="Left" Margin="2,41,0,0" VerticalAlignment="Top"/>
-        <Label Content="Description" HorizontalAlignment="Left" Margin="7,95,0,0" VerticalAlignment="Top"/>
-        <Label Content="Delay" HorizontalAlignment="Left" Margin="4,257,0,0" VerticalAlignment="Top"/>
-        <DatePicker HorizontalAlignment="Left" Margin="4,280,0,0" VerticalAlignment="Top" SelectedDate="{Binding Task.Delay}"/>
-        <CheckBox Content="Done" HorizontalAlignment="Left" Margin="5,314,0,0" VerticalAlignment="Top" IsChecked="{Binding Task.Done}"/>
-        <Label Content="Responsible" HorizontalAlignment="Left" Margin="2,199,0,0" VerticalAlignment="Top"/>
-        <TextBox HorizontalAlignment="Left" Margin="0,225,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120" Text="{Binding Task.Responsible}" />
-        <Button Content="Save" HorizontalAlignment="Left" Margin="2,345,0,0" VerticalAlignment="Top" Height="27" Width="60" Command="{Binding SaveCommand}"/>
-        <Button Content="Cancel" HorizontalAlignment="Left" Margin="80,345,0,0" VerticalAlignment="Top" Height="27" Width="60" Command="{Binding CancelCommand}"/>
-        <Label Content="ID" HorizontalAlignment="Left" Margin="7,10,0,0" VerticalAlignment="Top"/>
+        <TextBox HorizontalAlignment="Left" Margin="15,57,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Text="{Binding Task.TaskName}"/>
+        <TextBox HorizontalAlignment="Left" Margin="15,102,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="475" Height="73" Text="{Binding Task.Description}"/>
+        <Label Content="Task Name" HorizontalAlignment="Left" Margin="15,33,0,0" VerticalAlignment="Top"/>
+        <Label Content="Description" HorizontalAlignment="Left" Margin="15,78,0,0" VerticalAlignment="Top"/>
+        <Label Content="Delay" HorizontalAlignment="Left" Margin="15,223,0,0" VerticalAlignment="Top"/>
+        <DatePicker HorizontalAlignment="Left" Margin="15,245,0,0" VerticalAlignment="Top" SelectedDate="{Binding Task.Delay}"/>
+        <CheckBox Content="Done" HorizontalAlignment="Left" Margin="15,284,0,0" VerticalAlignment="Top" IsChecked="{Binding Task.Done}"/>
+        <Label Content="Responsible" HorizontalAlignment="Left" Margin="15,178,0,0" VerticalAlignment="Top"/>
+        <TextBox HorizontalAlignment="Left" Margin="15,202,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120" Text="{Binding Task.Responsible}" />
+        <Button Content="Save" HorizontalAlignment="Left" Margin="16,307,0,0" VerticalAlignment="Top" Height="27" Width="60" Command="{Binding SaveCommand}"/>
+        <Button Content="Cancel" HorizontalAlignment="Left" Margin="94,307,0,0" VerticalAlignment="Top" Height="27" Width="60" Command="{Binding CancelCommand}"/>
+        <Label Content="ID" HorizontalAlignment="Left" Margin="15,10,0,0" VerticalAlignment="Top"/>
 
 
     </Grid>

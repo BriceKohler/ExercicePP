@@ -25,25 +25,28 @@
     <Grid>
         <StackPanel Orientation="Vertical">
 
-            <Grid Height="50">
+            <Grid Height="70">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="2*"/>
                 </Grid.ColumnDefinitions>
-                <StackPanel Orientation="Horizontal" Height="50" Grid.ColumnSpan="1">
+                <StackPanel Orientation="Horizontal" Grid.ColumnSpan="1">
                     <Button Content="Add" Width="80" Command="{Binding AddCommand}"/>
                     <Button Content="Edit" Width="80" Command="{Binding EditCommand}" />
                     <Button Content="Delete" Width="80" Command="{Binding DeleteCommand}"/>
                 </StackPanel>
                 <Button Content="Save and Quit" Command="{Binding SaveAndQuitCommand}" Grid.Column="1" Width="90" HorizontalAlignment="Right" />
-                <Label Grid.Column="1" Content="Search by name" HorizontalAlignment="Left" Margin="7,4,0,0" VerticalAlignment="Top"/>
-                <TextBox Grid.Column="1" HorizontalAlignment="Left" Margin="10,28,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Text="{Binding NameFilter, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                <Label Grid.Column="1" Content="Search by name" HorizontalAlignment="Left" Margin="3,-7,0,0" VerticalAlignment="Top"/>
+                <TextBox Grid.Column="1" HorizontalAlignment="Left" Margin="6,17,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Text="{Binding NameFilter, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
-                <Label Grid.Column="1" Content="Search by responsible" HorizontalAlignment="Left" Margin="156,4,0,0" VerticalAlignment="Top"/>
-                <ComboBox Grid.Column="1" HorizontalAlignment="Left" Margin="161,25,0,0" VerticalAlignment="Top" Width="120" ItemsSource="{Binding PossibleRespFilter}" SelectedItem="{Binding RespFilter}" />
-                
-                <Label Grid.Column="1" Content="Done status" HorizontalAlignment="Left" Margin="310,4,0,0" VerticalAlignment="Top"/>
-                <ComboBox Grid.Column="1" HorizontalAlignment="Left" Margin="315,25,0,0" VerticalAlignment="Top" Width="120" ItemsSource="{Binding PossibleDoneFilter}" SelectedItem="{Binding DoneFilter}" />
+                <Label Grid.Column="1" Content="Search by responsible" HorizontalAlignment="Left" Margin="152,-7,0,0" VerticalAlignment="Top"/>
+                <ComboBox Grid.Column="1" HorizontalAlignment="Left" Margin="157,14,0,0" VerticalAlignment="Top" Width="120" ItemsSource="{Binding PossibleRespFilter}" SelectedItem="{Binding RespFilter}" />
+
+                <Label Grid.Column="1" Content="Done status" HorizontalAlignment="Left" Margin="306,-7,0,0" VerticalAlignment="Top"/>
+                <ComboBox Grid.Column="1" HorizontalAlignment="Left" Margin="311,14,0,0" VerticalAlignment="Top" Width="120" ItemsSource="{Binding PossibleDoneFilter}" SelectedItem="{Binding DoneFilter}" />
+                <CheckBox Grid.Column="1" Content="Ascending" HorizontalAlignment="Left" Margin="355,49,0,0" VerticalAlignment="Top" IsChecked="{Binding SortAscending, Mode=TwoWay}"/>
+                <ComboBox Grid.Column="1" HorizontalAlignment="Left" Margin="233,45,0,0" VerticalAlignment="Top" Width="120" ItemsSource="{Binding PossibleSorter}" SelectedItem="{Binding Sorter, Mode=TwoWay}"/>
+                <Label Grid.Column="1" Content="Order by" HorizontalAlignment="Left" Margin="176,43,0,0" VerticalAlignment="Top"/>
 
             </Grid>
             <ListView ItemsSource="{Binding FilteredTasks}"
@@ -54,6 +57,7 @@
                 <ListView.View>
                     <GridView>
                         <GridViewColumn DisplayMemberBinding="{Binding Path=ID}" Header="ID" Width="40"/>
+
                         <GridViewColumn DisplayMemberBinding="{Binding Path=TaskName}" Header="Name" Width="150"/>
                         <GridViewColumn DisplayMemberBinding="{Binding Path=Description}" Header ="Description" Width="380"/>
                         <GridViewColumn DisplayMemberBinding="{Binding Path=Responsible}" Header ="Responsible" Width="100"/>

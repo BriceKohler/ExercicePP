@@ -1,5 +1,5 @@
-﻿// <copyright file="IO.cs" company="PlaceholderCompany">
-// Copyright (c) PlaceholderCompany. All rights reserved.
+﻿// <copyright file="IO.cs" company="Kohler, Brice">
+// Copyright (c) Kohler, Brice. All rights reserved.
 // </copyright>
 
 namespace ExercicePP.Utilities

@@ -1,5 +1,5 @@
-// <copyright file="IOTests.cs" company="PlaceholderCompany">
-// Copyright (c) PlaceholderCompany. All rights reserved.
+// <copyright file="IOTests.cs" company="Kohler, Brice">
+// Copyright (c) Kohler, Brice. All rights reserved.
 // </copyright>
 
 namespace ExercicePPTest.UtilitiesTest

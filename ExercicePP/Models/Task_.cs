@@ -1,4 +1,8 @@
-﻿namespace ExercicePP.Models
+﻿// <copyright file="Task_.cs" company="Kohler, Brice">
+// Copyright (c) Kohler, Brice. All rights reserved.
+// </copyright>
+
+namespace ExercicePP.Models
 {
     using System;
 

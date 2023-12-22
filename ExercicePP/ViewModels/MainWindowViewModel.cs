@@ -1,4 +1,8 @@
-﻿namespace ExercicePP.ViewModels
+﻿// <copyright file="MainWindowViewModel.cs" company="Kohler, Brice">
+// Copyright (c) Kohler, Brice. All rights reserved.
+// </copyright>
+
+namespace ExercicePP.ViewModels
 {
     using ExercicePP.Models;
 

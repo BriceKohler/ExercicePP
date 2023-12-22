@@ -1,3 +1,7 @@
+// <copyright file="AssemblyInfo.cs" company="Kohler, Brice">
+// Copyright (c) Kohler, Brice. All rights reserved.
+// </copyright>
+
 using System.Windows;
 
 [assembly: ThemeInfo(

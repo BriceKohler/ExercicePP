@@ -1,4 +1,8 @@
-﻿namespace ExercicePP.ViewModels
+﻿// <copyright file="TaskViewModel.cs" company="Kohler, Brice">
+// Copyright (c) Kohler, Brice. All rights reserved.
+// </copyright>
+
+namespace ExercicePP.ViewModels
 {
     using System.Windows.Input;
     using ExercicePP.Models;

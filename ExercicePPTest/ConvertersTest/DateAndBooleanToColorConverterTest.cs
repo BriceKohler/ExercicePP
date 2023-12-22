@@ -1,5 +1,5 @@
-﻿// <copyright file="DateAndBooleanToColorConverterTest.cs" company="PlaceholderCompany">
-// Copyright (c) PlaceholderCompany. All rights reserved.
+﻿// <copyright file="DateAndBooleanToColorConverterTest.cs" company="Kohler, Brice">
+// Copyright (c) Kohler, Brice. All rights reserved.
 // </copyright>
 
 namespace ExercicePPTest.ConvertersTest

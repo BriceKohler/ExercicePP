@@ -1,69 +1,88 @@
-﻿using ExercicePP.Models;
-using ExercicePP.Views;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ExercicePP.ViewModels
+﻿namespace ExercicePP.ViewModels
 {
-    class MainWindowViewModel : ViewModelBase
-    {
-       public  MainWindowViewModel() 
-        { 
-            toDoListViewModel = new ToDoListViewModel(this);
-            _selectedViewModel = toDoListViewModel;
-        }
-        private ToDoListViewModel toDoListViewModel;
+    using ExercicePP.Models;
 
-        private ViewModelBase _selectedViewModel;
+    /// <summary>
+    /// Viewmodel of the main window.
+    /// </summary>
+    internal class MainWindowViewModel : ViewModelBase
+    {
+        #region Variables
+
+        /// <summary>
+        /// ToDo list Viewmodel.
+        /// </summary>
+        private readonly ToDoListViewModel toDoListViewModel;
+
+        #endregion Variables
+
+        #region Constructor
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MainWindowViewModel"/> class.
+        /// </summary>
+        public MainWindowViewModel()
+        {
+            this.toDoListViewModel = new ToDoListViewModel(this);
+            this.selectedViewModel = this.toDoListViewModel;
+        }
+        #endregion Constructor
+
+        #region Properties
+
+        /// <summary>
+        /// Selected Viewmodel to show.
+        /// </summary>
+        private ViewModelBase selectedViewModel;
+
+        /// <summary>
+        /// Gets or sets selected Viewmodel to show.
+        /// </summary>
         public ViewModelBase SelectedViewModel
         {
             get
             {
-                return _selectedViewModel;
+                return this.selectedViewModel;
             }
+
             set
             {
-                _selectedViewModel = value;
-                OnPropertyChanged();
+                this.selectedViewModel = value;
+                this.OnPropertyChanged();
             }
         }
 
+        #endregion Properties
+
+        #region Methods
+
         /// <summary>
-        /// switching from ToDoListView to TaskView
+        /// switching from ToDoListView to TaskView.
         /// </summary>
-        /// <param name="task"></param>
+        /// <param name="task">Task to show.</param>
         public void DisplayTaskView(Task_ task)
         {
-            SelectedViewModel = new TaskViewModel(task, this);
+            this.SelectedViewModel = new TaskViewModel(task, this);
         }
 
         /// <summary>
         /// saving Task and switching from TaskView to ToDoListView 
         /// </summary>
-        /// <param name="task"></param>
+        /// <param name="task">task to save.</param>
         public void SaveTask(Task_ task)
         {
-            toDoListViewModel.SaveTask(task);
-            SelectedViewModel = toDoListViewModel;
+            this.toDoListViewModel.SaveTask(task);
+            this.SelectedViewModel = this.toDoListViewModel;
         }
 
         /// <summary>
-        /// Only switching from TaskView to ToDoListView 
+        /// Only switching from TaskView to ToDoListView.
         /// </summary>
-        /// <param name="task"></param>
         public void CancelSave()
         {
-            SelectedViewModel = toDoListViewModel;
+            this.SelectedViewModel = this.toDoListViewModel;
         }
 
-
-
-
-
+        #endregion Methods
     }
 }

@@ -1,29 +1,37 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
+﻿// <copyright file="ViewModelBase.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
 
 namespace ExercicePP.ViewModels
 {
+    using System.ComponentModel;
+    using System.Runtime.CompilerServices;
+
     /// <summary>
-    /// To implement INotifiyPropertyChanged in every view
+    /// To implement INotifiyPropertyChanged in every view.
     /// </summary>
-    class ViewModelBase:INotifyPropertyChanged
+    internal class ViewModelBase : INotifyPropertyChanged
     {
         #region Notifications
 
+        /// <summary>
+        /// Handles the property has changed.
+        /// </summary>
         public event PropertyChangedEventHandler PropertyChanged;
 
         #endregion Notifications
 
         #region OnPropertyChanged
-        protected void OnPropertyChanged([CallerMemberName] string name = null)
+
+        /// <summary>
+        /// Indicates the propoerty has changed.
+        /// </summary>
+        /// <param name="name">Property name.</param>
+        protected void OnPropertyChanged([CallerMemberName] string? name = null)
         {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+            this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
         }
+
         #endregion OnPropertyChanged
     }
 }

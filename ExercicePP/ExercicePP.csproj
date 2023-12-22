@@ -10,14 +10,10 @@
 
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <EditorConfigFiles Remove="C:\NSS\GitRepositories\ExercicePPComplet\ExercicePP\.editorconfig" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="C:\NSS\GitRepositories\ExercicePPComplet\ExercicePP\.editorconfig" />
+    <PackageReference Include="StyleCop.Analyzers" Version="1.1.118">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
   </ItemGroup>
 
 </Project>

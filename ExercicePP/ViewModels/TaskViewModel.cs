@@ -1,99 +1,136 @@
-﻿using ExercicePP.Models;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Input;
-
-namespace ExercicePP.ViewModels
+﻿namespace ExercicePP.ViewModels
 {
-    class TaskViewModel : ViewModelBase
+    using System.Windows.Input;
+    using ExercicePP.Models;
+
+    /// <summary>
+    /// Viewmodel of the task view.
+    /// </summary>
+    internal class TaskViewModel : ViewModelBase
     {
         #region Constructor
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="TaskViewModel"/> class.
+        /// </summary>
+        /// <param name="task">task.</param>
+        /// <param name="mainwindowViewModel">MainWindowViewModel.</param>
         public TaskViewModel(Task_ task, MainWindowViewModel mainwindowViewModel)
         {
-            _task = task.Copy();
-            _mainwindowViewModel = mainwindowViewModel;
+            this.task = task.Copy();
+            this.mainwindowViewModel = mainwindowViewModel;
         }
+
         #endregion Constructor
 
         #region Variables
 
-        private Task_ oldtask;
-        private MainWindowViewModel _mainwindowViewModel;
+        /// <summary>
+        /// MainwindowViewModel to throw back after this view.
+        /// </summary>
+        private readonly MainWindowViewModel mainwindowViewModel;
+
         #endregion Variables
 
         #region Properties
-        private Task_ _task;
+
+        /// <summary>
+        /// Task to show.
+        /// </summary>
+        private Task_ task;
+
+        /// <summary>
+        /// Gets or sets task to show.
+        /// </summary>
         public Task_ Task
         {
             get
             {
-                return _task;
+                return this.task;
             }
+
             set
             {
-                _task = value;
-                OnPropertyChanged();
+                this.task = value;
+                this.OnPropertyChanged();
             }
         }
         #endregion Properties
 
         #region Commands
 
+        /// <summary>
+        /// Command to call task's saving.
+        /// </summary>
+        private ICommand saveCommand;
 
-        private ICommand _saveCommand;
-        private bool CanSave = true;
+        /// <summary>
+        /// Boolean to define whether saving is authorized or not.
+        /// </summary>
+        private readonly bool canSave = true;
+
+        /// <summary>
+        /// Gets command to call task's saving.
+        /// </summary>
         public ICommand SaveCommand
         {
             get
             {
-                if (_saveCommand == null)
+                if (this.saveCommand == null)
                 {
-                    _saveCommand = new RelayCommand(
-                        p => this.CanSave,
+                    this.saveCommand = new RelayCommand(
+                        p => this.canSave,
                         p => this.SaveTask());
                 }
-                return _saveCommand;
+                return this.saveCommand;
             }
         }
 
-        private ICommand _cancelCommand;
-        private bool CanCancel = true;
+        /// <summary>
+        /// Command to call edition canceling.
+        /// </summary>
+        private ICommand cancelCommand;
+
+        /// <summary>
+        /// Boolean to define whether canceling is authorized or not.
+        /// </summary>
+        private readonly bool canCancel = true;
+
+        /// <summary>
+        /// Gets Command to call edition canceling.
+        /// </summary>
         public ICommand CancelCommand
         {
             get
             {
-                if (_cancelCommand == null)
+                if (this.cancelCommand == null)
                 {
-                    _cancelCommand = new RelayCommand(
-                        p => this.CanCancel,
+                    this.cancelCommand = new RelayCommand(
+                        p => this.canCancel,
                         p => this.CancelTask());
                 }
-                return _cancelCommand;
+                return this.cancelCommand;
             }
         }
 
         #endregion Commands
 
         #region Methods
+
         /// <summary>
-        /// To save the new or existing task
+        /// To save the new or existing task.
         /// </summary>
         public void SaveTask()
         {
-            _mainwindowViewModel.SaveTask(Task);
+            this.mainwindowViewModel.SaveTask(this.Task);
         }
+
         /// <summary>
-        /// to cancel task editing
+        /// To cancel task editing.
         /// </summary>
         public void CancelTask()
         {
-            _mainwindowViewModel.CancelSave();
+            this.mainwindowViewModel.CancelSave();
         }
 
         #endregion Methods

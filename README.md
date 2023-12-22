@@ -20,5 +20,5 @@
 
 ## Development
 
-Brice Kohler, 19.12.23 - 22.12.23
+Brice Kohler, 19.12.23 - 23.12.23
 

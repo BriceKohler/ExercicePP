@@ -2,7 +2,7 @@
 ## Task manager made as exercise for Petitpierre job application
 
 - ExercicePP : main project
-- ExercicePPTest : Test project
+- ExercicePPTest : Nunit test project
 
 ## Features
 - Showing tasks, with delay and color code for emergency status
